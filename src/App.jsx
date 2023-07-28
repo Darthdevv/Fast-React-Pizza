@@ -2,7 +2,10 @@
 
 function App() {
   return (
-    <div>App</div>
+    <>
+      <span>hello</span>
+      <span>World</span>
+    </>
   )
 }
 
