@@ -49,3 +49,11 @@ See [Contributing Guide](CONTRIBUTING.md).
 ## License
 
 [MIT](LICENSE).
+
+## Sponsors
+
+<p align="center">
+  <a target="_blank" href="https://github.com/sponsors/yyx990803">
+    <img alt="sponsors" src="https://sponsors.vuejs.org/vite.svg">
+  </a>
+</p>
