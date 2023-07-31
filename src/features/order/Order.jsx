@@ -1,5 +1,5 @@
 // Test ID: IIDSAT
-
+import SearchOrder from "./SearchOrder";
 import {
   calcMinutesLeft,
   formatCurrency,
@@ -58,7 +58,7 @@ function Order() {
     <div>
       <div>
         <h2>Status</h2>
-
+        <SearchOrder/>
         <div>
           {priority && <span>Priority</span>}
           <span>{status} order</span>
