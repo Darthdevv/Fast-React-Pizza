@@ -20,6 +20,7 @@ function App() {
         {
           path: "/menu",
           element: <Menu />,
+          errorElement: <Error/>,
           loader: menuLoader
         },
         {
