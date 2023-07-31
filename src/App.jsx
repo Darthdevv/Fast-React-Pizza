@@ -11,6 +11,7 @@ function App() {
   const router = createBrowserRouter([
     {
       element: <AppLayout />,
+      errorElement: <Error/>,
       children: [
         {
           path: "/",
@@ -32,10 +33,6 @@ function App() {
         {
           path: "/order/new",
           element: <CreateOrder />,
-        },
-        {
-          path: "*",
-          element: <Error />,
         },
       ],
     },
