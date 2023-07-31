@@ -1,25 +1,17 @@
-
 import { useLoaderData } from 'react-router-dom';
-import {getMenu} from '../../services/apiRestaurant'
+import { getMenu } from '../../services/apiRestaurant'
+import MenuItem from './MenuItem';
 
 function Menu() {
   const menu = useLoaderData();
   console.log(menu);
   return (
-    <div>
-      {menu.map(item => (
-        <div key={item.id}>
-          <p>{item.name}</p>
-          <img src={item.imageUrl} alt="pizzaimg" />
-          <div>{item.ingredients.map(ing => (
-            <ul key={ing.index}>
-              <li>{ing}</li>
-            </ul>
-          ))}</div>
-  </div>
-))}
-    </div>
-  );
+    <ul>
+      {menu.map(pizza => (
+        <MenuItem key={pizza.id} pizza={pizza}/>
+      )) }
+    </ul>
+  )
 }
 
 export async function loader() {
