@@ -4,6 +4,8 @@ import {
   formatCurrency,
   formatDate,
 } from "../../utils/helpers";
+import { useLoaderData } from "react-router-dom";
+import { getOrder } from "../../services/apiRestaurant";
 
 const order = {
   id: "ABCDEF",

@@ -11,7 +11,7 @@ function App() {
   const router = createBrowserRouter([
     {
       element: <AppLayout />,
-      errorElement: <Error/>,
+      errorElement: <Error />,
       children: [
         {
           path: "/",
@@ -20,8 +20,8 @@ function App() {
         {
           path: "/menu",
           element: <Menu />,
-          errorElement: <Error/>,
-          loader: menuLoader
+          errorElement: <Error />,
+          loader: menuLoader,
         },
         {
           path: "/cart",
@@ -30,10 +30,13 @@ function App() {
         {
           path: "/order/:orderId",
           element: <Order />,
+          loader: orderLoader,
+          errorElement: <Error />,
         },
         {
           path: "/order/new",
           element: <CreateOrder />,
+          action: createOrderAction,
         },
       ],
     },
