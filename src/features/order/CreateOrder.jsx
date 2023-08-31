@@ -46,7 +46,7 @@ function CreateOrder() {
     <div>
       <h2>Ready to order? Let's go!</h2>
 
-      <form>
+      <form method="POST">
         <div>
           <label>First Name</label>
           <input type="text" name="customer" required />
@@ -57,6 +57,7 @@ function CreateOrder() {
           <div>
             <input type="tel" name="phone" required />
           </div>
+          {formErrors?.phone && <p>{ formErrors.phone}</p>}
         </div>
 
         <div>
@@ -78,7 +79,7 @@ function CreateOrder() {
         </div>
 
         <div>
-          <button>Order now</button>
+          <button className="">Order now</button>
         </div>
       </form>
     </div>
