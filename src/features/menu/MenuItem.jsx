@@ -31,8 +31,10 @@ function MenuItem({ pizza }) {
         <p className=" font-sm capitalize italic text-stone-500">{ingredients.join(', ')}</p>
         <div className="mt-auto flex items-center justify-between">
           {!soldOut ? <p className="text-sm">{formatCurrency(unitPrice)}</p> : <p className="text-sm text-stone-500 font-medium uppercase">Sold out</p>}
-          {isInCart && <UpdateItemQuantity pizzaId={id} />}
-          {isInCart && <DeleteItem pizzaId={id} />}
+          {isInCart && <div className="flex items-center gap-3 sm:gap-8">
+            <UpdateItemQuantity currentQuantity={currentQuantity} pizzaId={id} />
+            <DeleteItem pizzaId={id} />
+          </div>}
           {!soldOut && !isInCart && <Button onClick={handleAddToCart} type="small">Add to cart</Button>}
         </div>
       </div>
