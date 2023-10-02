@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { Form, redirect, useActionData, useNavigation } from 'react-router-dom';
 import { createOrder } from '../../services/apiRestaurant';
 import Button from '../../ui/Button';
@@ -19,14 +20,13 @@ function CreateOrder() {
   const username = useSelector(state => state.user.username);
   const navigation = useNavigation();
   const isSubmitting = navigation.state === 'submitting';
-  // const [name, setName] = useState(username);
   const formErrors = useActionData();
-
-  // const [withPriority, setWithPriority] = useState(false);
+  const [withPriority, setWithPriority] = useState(false);
   const cart = useSelector(getCart);
   const totalCartPrice = useSelector(getTotalCartPrice);
-  const priorityPrice = 0;
+  const priorityPrice = withPriority? totalCartPrice * 0.2 : 0;
   const totalPrice = totalCartPrice + priorityPrice;
+
   if(!cart.length) return <EmptyCart/>
 
   return (
@@ -40,7 +40,6 @@ function CreateOrder() {
           <div className='grow'>
             <input className="input w-full"
               defaultValue={username}
-              // onChange={e => setName(e.target.value)}
               type="text"
               name="customer"
               required />
@@ -77,8 +76,8 @@ function CreateOrder() {
             type="checkbox"
             name="priority"
             id="priority"
-            // value={withPriority}
-            // onChange={(e) => setWithPriority(e.target.checked)}
+            value={withPriority}
+            onChange={(e) => setWithPriority(e.target.checked)}
           />
           <label htmlFor="priority" className="font-medium">
             Want to yo give your order priority?
@@ -103,7 +102,7 @@ export async function action({ request }) {
   const order = {
     ...data,
     cart: JSON.parse(data.cart),
-    priority: data.priority === 'on',
+    priority: data.priority === 'true',
   };
 
   const errors = {};
